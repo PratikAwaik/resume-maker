@@ -130,7 +130,7 @@ export default function WorkExpEdit() {
                 <textarea
                   name="workAccomplishments"
                   id="work-accomplishments"
-                  placeholder="Write your accomplishments separated by a full stop(.)"
+                  placeholder="Your Work Accomplishments..."
                   onChange={(e) => handleChange(index, e)}
                   value={workExp.workAccomplishments}></textarea>
               </div>

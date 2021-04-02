@@ -99,7 +99,7 @@ export default function ProjectsEdit() {
                 <textarea
                   name="description"
                   id="project-description"
-                  placeholder="Write project's description separated by a full stop(.)"
+                  placeholder="Your Project's Description..."
                   onChange={(e) => handleChange(index, e)}
                   value={project.description}></textarea>
               </div>
