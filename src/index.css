@@ -1,13 +1,448 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --blue: #455aa3;
+  --gray: rgba(120, 120, 120);
+  --white: #ffffff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: rgba(230, 230, 230, 0.7);
+  overflow: auto;
+  font-size: 10px;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  font-size: 3.5rem;
+  background-color: var(--blue);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header img {
+  width: 7rem;
+  margin-right: 1.6rem;
+}
+
+/*--------------------*/
+/*--------------------*/
+/* Edit View Design */
+/*--------------------*/
+/*--------------------*/
+
+#resume-preview,
+#resume-edit {
+  width: 100rem;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  margin: 6rem auto;
+  padding: 2rem 3rem;
+  bottom: 3rem;
+}
+
+.personal-info-edit,
+.skills-edit,
+.work-exp-edit,
+.projects-edit,
+.education-edit {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.personal-info-edit h2,
+.skills-edit h2,
+.work-exp-edit h2,
+.projects-edit h2,
+.education-edit h2 {
+  font-size: 3.5rem;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+label {
+  color: #9a9a9a;
+  font-size: 2rem;
+}
+
+.full-name-edit,
+.title-edit,
+.summary-edit,
+.email-edit,
+.phone-edit,
+.linkedin-edit,
+.github-edit,
+.skills-edit input,
+.work-exp-form-edit input,
+.work-exp-form-edit textarea,
+.project-form-edit input,
+.project-form-edit textarea,
+.education-form-edit input {
+  width: 100%;
+  margin: 1rem 0 2rem 0;
+  height: 4rem;
+  font-size: 1.9rem;
+  padding: 0 1rem;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  box-shadow: none;
+  outline: none;
+  color: #000;
+}
+
+.summary-edit {
+  height: 7rem;
+  padding: 1rem;
+}
+
+.work-exp-form-edit textarea,
+.project-form-edit textarea {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 1rem;
+  height: 12rem;
+}
+
+#row-1,
+#row-2 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.email-container-edit,
+.phone-container-edit,
+.linkedin-container-edit,
+.github-container-edit,
+.work-position-container-edit,
+.work-company-container-edit,
+.work-city-container-edit,
+.project-name-container,
+.project-link-container,
+.education-degree-container,
+.education-university-container,
+.education-from-container,
+.education-to-container {
+  width: 49.3%;
+}
+
+.email-container-edit,
+.linkedin-container-edit,
+.work-position-container-edit,
+.work-duration-to-container,
+.work-duration-from-container,
+.project-name-container,
+.education-degree-container,
+.education-from-container {
+  margin-right: 1.3rem;
+}
+
+.work-exp-form-edit,
+.project-form-edit,
+.education-form-edit {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.work-duration-from-container,
+.work-duration-to-container {
+  width: 23.9%;
+}
+
+.work-accomplishments-container,
+.project-technology-container,
+.project-description-container {
+  width: 100%;
+}
+
+.add-work-exp-btn,
+.delete-work-exp-btn,
+.add-project-btn,
+.delete-project-btn,
+.add-education-btn,
+.delete-education-btn {
+  display: block;
+  width: 49.3%;
+  margin: 0.5rem 1.3rem 0 0;
+  padding: 0.5rem 3rem;
+  background-color: var(--blue);
+  color: #fff;
+  border: 2px solid var(--blue);
+  border-radius: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.delete-work-exp-btn,
+.delete-project-btn,
+.delete-education-btn {
+  margin-left: 0;
+  margin-right: 0;
+  background-color: red;
+  border: 2px solid red;
+}
+
+/*--------------------*/
+/*--------------------*/
+/*Preview Design*/
+/*--------------------*/
+/*--------------------*/
+
+.personal-info-preview,
+.skills-preview,
+.work-exp-preview,
+.projects-preview,
+.education-preview {
+  margin-bottom: 2rem;
+}
+
+.full-name-preview {
+  font-size: 4rem;
+  color: var(--blue);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+.title-preview {
+  font-size: 3rem;
+  margin-bottom: 1.3rem;
+}
+
+.summary-preview {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.personal-info-contact-preview {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+.contact-img {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+}
+
+.contact-detail {
+  font-size: 1.7rem;
+}
+
+.skills-preview h2,
+.work-exp-preview h2,
+.projects-preview h2,
+.education-preview h2 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  color: var(--blue);
+  font-weight: 700;
+  margin: 2rem 0 1rem 0;
+}
+
+.skills-preview .skills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.3rem;
+}
+
+.skill-item-preview {
+  width: auto;
+  font-size: 1.8rem;
+  padding: 0.8rem;
+  background-color: var(--blue);
+  color: var(--white);
+  border: 1px solid var(--blue);
+  border-radius: 0.5rem;
+  margin-right: 1.5rem;
+  margin-top: 1rem;
+}
+
+.work-position,
+.project-name,
+.education-degree {
+  font-size: 2.8rem;
+  color: black;
+  font-weight: 700;
+}
+
+.work-company,
+.education-university {
+  font-size: 2.5rem;
+  color: black;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.project-meta,
+.work-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.work-duration,
+.work-city,
+.project-link,
+.project-technologies,
+.education-duration {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-style: italic;
+  color: var(--gray);
+  margin: 0.5rem 0;
+}
+
+.project-technologies,
+.project-link {
+  margin: 1.3rem 0;
+}
+
+.work-accomplishments,
+.project-description {
+  width: 100%;
+  padding-left: 1rem;
+  font-size: 1.8rem;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.accomplishment,
+.desc {
+  font-size: 1.8rem;
+  color: black;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.download-btn {
+  display: block;
+  height: 6rem;
+  width: auto;
+  padding: 1rem;
+  background-color: white;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  border-radius: 1rem;
+  margin: 0 auto;
+  font-size: 2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.change-view-btn {
+  display: block;
+  margin: 3rem auto;
+  padding: 1.5rem 3rem;
+  background-color: #fff;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  border-radius: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.download-btn:hover,
+.change-view-btn:hover {
+  color: white;
+  background-color: var(--blue);
+}
+
+@media only screen and (max-width: 1024px) {
+  html {
+    font-size: 9px;
+  }
+
+  #resume-edit,
+  #resume-preview {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .email-container-edit,
+  .phone-container-edit,
+  .linkedin-container-edit,
+  .github-container-edit,
+  .work-position-container-edit,
+  .work-company-container-edit,
+  .work-city-container-edit,
+  .project-name-container,
+  .project-link-container,
+  .education-degree-container,
+  .education-university-container,
+  .education-from-container,
+  .education-to-container,
+  .work-duration-from-container,
+  .work-duration-to-container,
+  .add-work-exp-btn,
+  .delete-work-exp-btn,
+  .add-project-btn,
+  .delete-project-btn,
+  .add-education-btn,
+  .delete-education-btn {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .delete-education-btn,
+  .delete-project-btn,
+  .delete-work-exp-btn {
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .header {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .header {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .header {
+    font-size: 2rem;
+  }
 }
