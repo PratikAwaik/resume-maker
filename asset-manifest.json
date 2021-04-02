@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/resume-maker/static/css/main.239535c9.chunk.css",
+    "main.js": "/resume-maker/static/js/main.ee75727c.chunk.js",
+    "main.js.map": "/resume-maker/static/js/main.ee75727c.chunk.js.map",
+    "runtime-main.js": "/resume-maker/static/js/runtime-main.d6267226.js",
+    "runtime-main.js.map": "/resume-maker/static/js/runtime-main.d6267226.js.map",
+    "static/js/2.4444eba3.chunk.js": "/resume-maker/static/js/2.4444eba3.chunk.js",
+    "static/js/2.4444eba3.chunk.js.map": "/resume-maker/static/js/2.4444eba3.chunk.js.map",
+    "static/js/3.fea3fa92.chunk.js": "/resume-maker/static/js/3.fea3fa92.chunk.js",
+    "static/js/3.fea3fa92.chunk.js.map": "/resume-maker/static/js/3.fea3fa92.chunk.js.map",
+    "static/js/4.8efa681f.chunk.js": "/resume-maker/static/js/4.8efa681f.chunk.js",
+    "static/js/4.8efa681f.chunk.js.map": "/resume-maker/static/js/4.8efa681f.chunk.js.map",
+    "index.html": "/resume-maker/index.html",
+    "static/css/main.239535c9.chunk.css.map": "/resume-maker/static/css/main.239535c9.chunk.css.map",
+    "static/js/2.4444eba3.chunk.js.LICENSE.txt": "/resume-maker/static/js/2.4444eba3.chunk.js.LICENSE.txt",
+    "static/js/3.fea3fa92.chunk.js.LICENSE.txt": "/resume-maker/static/js/3.fea3fa92.chunk.js.LICENSE.txt",
+    "static/js/4.8efa681f.chunk.js.LICENSE.txt": "/resume-maker/static/js/4.8efa681f.chunk.js.LICENSE.txt",
+    "static/media/email.9f048137.svg": "/resume-maker/static/media/email.9f048137.svg",
+    "static/media/github.7911ad4e.svg": "/resume-maker/static/media/github.7911ad4e.svg",
+    "static/media/linkedin.4e8d7e5b.svg": "/resume-maker/static/media/linkedin.4e8d7e5b.svg",
+    "static/media/phone.3d57946f.svg": "/resume-maker/static/media/phone.3d57946f.svg",
+    "static/media/resume.da4af34a.png": "/resume-maker/static/media/resume.da4af34a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d6267226.js",
+    "static/js/3.fea3fa92.chunk.js",
+    "static/css/main.239535c9.chunk.css",
+    "static/js/main.ee75727c.chunk.js"
+  ]
+}
