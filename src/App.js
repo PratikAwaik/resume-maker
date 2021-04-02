@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import resumeImg from "./images/resume.png";
+import ResumeEdit from "./components/Edit/ResumeEdit";
+import ResumePreview from "./components/Preview/ResumePreview";
 
 function App() {
+  const [toEdit, setToEdit] = useState(true);
+
+  const changeView = (e) => {
+    if (e.target.textContent === "Edit") {
+      e.target.textContent = "Preview";
+      setToEdit(true);
+    } else {
+      e.target.textContent = "Edit";
+      setToEdit(false);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="header">
+        <img src={resumeImg} alt="Resume" />
+        <h1>Resume Maker</h1>
+      </div>
+      <button className="change-view-btn" onClick={(e) => changeView(e)}>
+        Preview
+      </button>
+      {toEdit ? <ResumeEdit /> : <ResumePreview />}
     </div>
   );
 }
