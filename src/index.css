@@ -59,10 +59,7 @@ main {
 }
 
 .personal-info-edit,
-.skills-edit,
-.work-exp-edit,
-.projects-edit,
-.education-edit {
+.skills-edit {
   width: 100%;
   margin-bottom: 2rem;
 }
@@ -180,7 +177,7 @@ label {
 .delete-education-btn {
   display: block;
   width: 49.3%;
-  margin: 0.5rem 1.3rem 0 0;
+  margin: 0.5rem 1.3rem 2rem 0;
   padding: 0.5rem 3rem;
   background-color: var(--blue);
   color: #fff;
