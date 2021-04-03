@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { setDataOnInitialMount } from "../../helpers";
 import emailImg from "../../images/email.svg";
 import phoneImg from "../../images/phone.svg";
 import linkedinImg from "../../images/linkedin.svg";
@@ -8,9 +9,7 @@ export default function PersonalInfoPreview() {
   const [personalInfo, setPersonalInfo] = useState({});
 
   useEffect(() => {
-    if (localStorage.getItem("personalInfo")) {
-      setPersonalInfo(JSON.parse(localStorage.getItem("personalInfo")));
-    }
+    setDataOnInitialMount("personalInfo", setPersonalInfo);
   }, []);
 
   return (

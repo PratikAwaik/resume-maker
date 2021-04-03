@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { setDataOnInitialMount } from "../../helpers";
 
 export default function ProjectsPreview() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem("projects")) {
-      setProjects(JSON.parse(localStorage.getItem("projects")));
-    }
+    setDataOnInitialMount("projects", setProjects);
   }, []);
 
   return (

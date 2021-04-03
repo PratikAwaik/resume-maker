@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { setDataOnInitialMount } from "../../helpers";
 
 export default function WorkExpPreview() {
   const [workExps, setWorkExps] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem("workExps")) {
-      setWorkExps(JSON.parse(localStorage.getItem("workExps")));
-    }
+    setDataOnInitialMount("workExps", setWorkExps);
   }, []);
 
   return (

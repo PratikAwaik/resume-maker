@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from "react";
+import {
+  setDataOnInitialMount,
+  setDataOnChange,
+  addData,
+  deleteData,
+} from "../../helpers";
 
 export default function WorkExpEdit() {
   const [workExps, setWorkExps] = useState([
@@ -13,41 +19,8 @@ export default function WorkExpEdit() {
   ]);
 
   useEffect(() => {
-    if (localStorage.getItem("workExps")) {
-      setWorkExps(JSON.parse(localStorage.getItem("workExps")));
-    }
+    setDataOnInitialMount("workExps", setWorkExps);
   }, []);
-
-  const handleChange = (id, e) => {
-    const { name, value } = e.target;
-    const newWorkExps = [...workExps];
-    newWorkExps[id][name] = value;
-    localStorage.setItem("workExps", JSON.stringify(newWorkExps));
-    setWorkExps(newWorkExps);
-  };
-
-  const addWorkExpForm = (id, e) => {
-    const newWork = {
-      workPosition: "",
-      workCompany: "",
-      workDurationFrom: "",
-      workDurationTo: "",
-      workCity: "",
-      workAccomplishments: "",
-    };
-
-    const newWorkExps = [...workExps];
-    newWorkExps.push(newWork);
-    localStorage.setItem("workExps", JSON.stringify(newWorkExps));
-    setWorkExps(newWorkExps);
-  };
-
-  const deleteWorkExpForm = (id, e) => {
-    const newWorkExps = [...workExps];
-    newWorkExps.splice(id, 1);
-    localStorage.setItem("workExps", JSON.stringify(newWorkExps));
-    setWorkExps(newWorkExps);
-  };
 
   return (
     <div className="work-exp-edit">
@@ -67,7 +40,9 @@ export default function WorkExpEdit() {
                   id="work-position"
                   type="text"
                   placeholder="Software Developer"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, workExps, setWorkExps, "workExps")
+                  }
                   value={workExp.workPosition}
                 />
               </div>
@@ -80,7 +55,9 @@ export default function WorkExpEdit() {
                   id="work-company"
                   type="text"
                   placeholder="Google"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, workExps, setWorkExps, "workExps")
+                  }
                   value={workExp.workCompany}
                 />
               </div>
@@ -93,7 +70,9 @@ export default function WorkExpEdit() {
                   id="work-duration-from"
                   type="text"
                   placeholder="10/2018"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, workExps, setWorkExps, "workExps")
+                  }
                   value={workExp.workDurationFrom}
                 />
               </div>
@@ -106,7 +85,9 @@ export default function WorkExpEdit() {
                   id="work-duration-to"
                   type="text"
                   placeholder="Present"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, workExps, setWorkExps, "workExps")
+                  }
                   value={workExp.workDurationTo}
                 />
               </div>
@@ -119,7 +100,9 @@ export default function WorkExpEdit() {
                   id="work-city"
                   type="text"
                   placeholder="Florida, USA"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, workExps, setWorkExps, "workExps")
+                  }
                   value={workExp.workCity}
                 />
               </div>
@@ -131,21 +114,39 @@ export default function WorkExpEdit() {
                   name="workAccomplishments"
                   id="work-accomplishments"
                   placeholder="Your Work Accomplishments..."
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, workExps, setWorkExps, "workExps")
+                  }
                   value={workExp.workAccomplishments}></textarea>
               </div>
 
               <button
                 className="add-work-exp-btn"
                 type="button"
-                onClick={(e) => addWorkExpForm(index, e)}>
+                onClick={(e) =>
+                  addData(
+                    {
+                      workPosition: "",
+                      workCompany: "",
+                      workDurationFrom: "",
+                      workDurationTo: "",
+                      workCity: "",
+                      workAccomplishments: "",
+                    },
+                    workExps,
+                    setWorkExps,
+                    "workExps",
+                  )
+                }>
                 ADD
               </button>
               {workExps.length > 1 ? (
                 <button
                   className="delete-work-exp-btn"
                   type="button"
-                  onClick={(e) => deleteWorkExpForm(index, e)}>
+                  onClick={(e) =>
+                    deleteData(index, workExps, setWorkExps, "workExps")
+                  }>
                   DELETE
                 </button>
               ) : null}

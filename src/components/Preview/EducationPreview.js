@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { setDataOnInitialMount } from "../../helpers";
 
 export default function EducationPreview() {
   const [education, setEducation] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem("education")) {
-      setEducation(JSON.parse(localStorage.getItem("education")));
-    }
+    setDataOnInitialMount("education", setEducation);
   }, []);
 
   return (

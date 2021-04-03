@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { setDataOnInitialMount } from "../../helpers";
 
 export default function SkillsEdit() {
   const [skills, setSkills] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("skills")) {
-      setSkills(JSON.parse(localStorage.getItem("skills")));
-    }
+    setDataOnInitialMount("skills", setSkills);
   }, []);
 
   const handleChange = (e) => {

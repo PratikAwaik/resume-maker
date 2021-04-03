@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from "react";
+import {
+  setDataOnInitialMount,
+  setDataOnChange,
+  addData,
+  deleteData,
+} from "../../helpers";
 
 export default function EducationEdit() {
   const [education, setEducation] = useState([
@@ -11,39 +17,8 @@ export default function EducationEdit() {
   ]);
 
   useEffect(() => {
-    if (localStorage.getItem("education")) {
-      setEducation(JSON.parse(localStorage.getItem("education")));
-    }
+    setDataOnInitialMount("education", setEducation);
   }, []);
-
-  const handleChange = (id, e) => {
-    const { name, value } = e.target;
-    const newEducation = [...education];
-    newEducation[id][name] = value;
-    localStorage.setItem("education", JSON.stringify(newEducation));
-    setEducation(newEducation);
-  };
-
-  const addEducation = (e) => {
-    const newEd = {
-      degree: "",
-      university: "",
-      edFrom: "",
-      edTo: "",
-    };
-
-    const newEducation = [...education];
-    newEducation.push(newEd);
-    localStorage.setItem("education", JSON.stringify(newEducation));
-    setEducation(newEducation);
-  };
-
-  const deleteEducation = (id, e) => {
-    const newEducation = [...education];
-    newEducation.splice(id, 1);
-    localStorage.setItem("education", JSON.stringify(newEducation));
-    setEducation(newEducation);
-  };
 
   return (
     <div className="education-edit">
@@ -63,7 +38,15 @@ export default function EducationEdit() {
                   id="education-degree"
                   type="text"
                   placeholder="B.Tech Engineering"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(
+                      index,
+                      e,
+                      education,
+                      setEducation,
+                      "education",
+                    )
+                  }
                   value={ed.degree}
                 />
               </div>
@@ -76,7 +59,15 @@ export default function EducationEdit() {
                   id="education-university"
                   type="text"
                   placeholder="Technical University"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(
+                      index,
+                      e,
+                      education,
+                      setEducation,
+                      "education",
+                    )
+                  }
                   value={ed.university}
                 />
               </div>
@@ -89,7 +80,15 @@ export default function EducationEdit() {
                   id="education-from"
                   type="text"
                   placeholder="10/2018"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(
+                      index,
+                      e,
+                      education,
+                      setEducation,
+                      "education",
+                    )
+                  }
                   value={ed.edFrom}
                 />
               </div>
@@ -102,7 +101,15 @@ export default function EducationEdit() {
                   id="education-to"
                   type="text"
                   placeholder="10/2022"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(
+                      index,
+                      e,
+                      education,
+                      setEducation,
+                      "education",
+                    )
+                  }
                   value={ed.edTo}
                 />
               </div>
@@ -110,14 +117,23 @@ export default function EducationEdit() {
               <button
                 type="button"
                 className="add-education-btn"
-                onClick={(e) => addEducation(e)}>
+                onClick={(e) =>
+                  addData(
+                    { degree: "", university: "", edFrom: "", edTo: "" },
+                    education,
+                    setEducation,
+                    "education",
+                  )
+                }>
                 ADD
               </button>
               {education.length > 1 ? (
                 <button
                   type="button"
                   className="delete-education-btn"
-                  onClick={(e) => deleteEducation(index, e)}>
+                  onClick={(e) =>
+                    deleteData(index, education, setEducation, "education")
+                  }>
                   DELETE
                 </button>
               ) : null}

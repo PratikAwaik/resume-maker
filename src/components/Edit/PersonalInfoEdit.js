@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { setDataOnInitialMount } from "../../helpers";
 
 export default function PersonalInfoEdit() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -12,9 +13,7 @@ export default function PersonalInfoEdit() {
   });
 
   useEffect(() => {
-    if (localStorage.getItem("personalInfo")) {
-      setPersonalInfo(JSON.parse(localStorage.getItem("personalInfo")));
-    }
+    setDataOnInitialMount("personalInfo", setPersonalInfo);
   }, []);
 
   const handleChange = (e) => {

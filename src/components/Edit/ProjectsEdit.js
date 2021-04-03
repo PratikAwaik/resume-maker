@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from "react";
+import {
+  setDataOnInitialMount,
+  setDataOnChange,
+  addData,
+  deleteData,
+} from "../../helpers";
 
 export default function ProjectsEdit() {
   const [projects, setProjects] = useState([
@@ -11,39 +17,8 @@ export default function ProjectsEdit() {
   ]);
 
   useEffect(() => {
-    if (localStorage.getItem("projects")) {
-      setProjects(JSON.parse(localStorage.getItem("projects")));
-    }
+    setDataOnInitialMount("projects", setProjects);
   }, []);
-
-  const handleChange = (id, e) => {
-    const { name, value } = e.target;
-    const newProjects = [...projects];
-    newProjects[id][name] = value;
-    localStorage.setItem("projects", JSON.stringify(newProjects));
-    setProjects(newProjects);
-  };
-
-  const addProject = (e) => {
-    const newProject = {
-      projectName: "",
-      projectLink: "",
-      technologies: "",
-      description: "",
-    };
-    const newProjects = [...projects];
-    newProjects.push(newProject);
-
-    localStorage.setItem("projects", JSON.stringify(newProjects));
-    setProjects(newProjects);
-  };
-
-  const deleteProject = (id, e) => {
-    const newProjects = [...projects];
-    newProjects.splice(id, 1);
-    localStorage.setItem("projects", JSON.stringify(newProjects));
-    setProjects(newProjects);
-  };
 
   return (
     <div className="projects-edit">
@@ -63,7 +38,9 @@ export default function ProjectsEdit() {
                   id="project-name"
                   type="text"
                   placeholder="Resume Maker"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, projects, setProjects, "projects")
+                  }
                   value={project.projectName}
                 />
               </div>
@@ -75,7 +52,9 @@ export default function ProjectsEdit() {
                   id="project-link"
                   type="text"
                   placeholder="https://myProfile.github.io/myProject"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, projects, setProjects, "projects")
+                  }
                   value={project.projectLink}
                 />
               </div>
@@ -87,7 +66,9 @@ export default function ProjectsEdit() {
                   id="project-technology"
                   type="text"
                   placeholder="HTML, CSS, ReactJS"
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, projects, setProjects, "projects")
+                  }
                   value={project.technologies}
                 />
               </div>
@@ -100,21 +81,37 @@ export default function ProjectsEdit() {
                   name="description"
                   id="project-description"
                   placeholder="Your Project's Description..."
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) =>
+                    setDataOnChange(index, e, projects, setProjects, "projects")
+                  }
                   value={project.description}></textarea>
               </div>
 
               <button
                 type="button"
                 className="add-project-btn"
-                onClick={(e) => addProject(e)}>
+                onClick={(e) =>
+                  addData(
+                    {
+                      projectName: "",
+                      projectLink: "",
+                      technologies: "",
+                      description: "",
+                    },
+                    projects,
+                    setProjects,
+                    "projects",
+                  )
+                }>
                 ADD
               </button>
               {projects.length > 1 ? (
                 <button
                   type="button"
                   className="delete-project-btn"
-                  onClick={(e) => deleteProject(index, e)}>
+                  onClick={(e) =>
+                    deleteData(index, projects, setProjects, "projects")
+                  }>
                   DELETE
                 </button>
               ) : null}
